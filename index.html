@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Futurística com Imagens Individuais nos Botões</title>
+  <title>Página Futurística com Imagens e Estilo Personalizado</title>
+  <!-- Importando uma fonte futurística do Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* Reset básico */
     body, html {
@@ -54,24 +56,29 @@
       border: none;
       border-radius: 15px;
       text-decoration: none;
-      color: white;
+      color: #b2ff59; /* Verde claro */
       overflow: hidden;
       z-index: 0;
+      transition: box-shadow 0.5s ease;
+    }
+    
+    .btn:hover {
+      box-shadow: 0 0 15px #b2ff59;
     }
     
     /* Título do botão */
     .btn .title {
-      position: relative;
-      z-index: 2;
+      position: absolute;
       bottom: 10px;
       left: 10px;
       font-size: 1.2em;
       letter-spacing: 1px;
+      font-family: 'Orbitron', sans-serif;
+      color: #b2ff59;
+      -webkit-text-stroke: 1px black;
+      text-shadow: 1px 1px 2px black, 0 0 5px black;
       transition: text-shadow 0.5s ease;
-    }
-    
-    .btn:hover .title {
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      z-index: 2;
     }
     
     /* Efeito shimmer cobrindo todo o botão */
