@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Futurística com Fundo Psicotela</title>
+  <title>Página Futurística com Imagens Individuais nos Botões</title>
   <style>
     /* Reset básico */
     body, html {
@@ -12,7 +12,7 @@
       height: 100%;
     }
     
-    /* Estilo do iframe de fundo */
+    /* Iframe de fundo */
     .background-iframe {
       position: fixed;
       top: 0;
@@ -20,10 +20,10 @@
       width: 100%;
       height: 100%;
       border: none;
-      z-index: -1; /* Envia o iframe para trás do conteúdo */
+      z-index: -1;
     }
     
-    /* Conteúdo principal sobreposto ao fundo */
+    /* Conteúdo principal */
     .content {
       position: relative;
       z-index: 1;
@@ -33,7 +33,7 @@
       height: 100%;
     }
     
-    /* Contêiner centralizado dos botões */
+    /* Container de botões */
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -43,29 +43,26 @@
       padding: 20px;
     }
     
-    /* Estilo dos botões com gradiente animado */
+    /* Estilo base dos botões */
     .btn {
       position: relative;
       display: inline-block;
       width: 300px;
       height: 150px;
-      background: linear-gradient(45deg, #b2ff59, #76ff03, #ccff90);
-      background-size: 400%;
+      background-size: cover;
+      background-position: center;
       border: none;
       border-radius: 15px;
       text-decoration: none;
       color: white;
       overflow: hidden;
-      transition: background-position 0.5s ease;
+      z-index: 0;
     }
     
-    .btn:hover {
-      background-position: right center;
-    }
-    
-    /* Título interno posicionado no canto inferior esquerdo */
+    /* Título do botão */
     .btn .title {
-      position: absolute;
+      position: relative;
+      z-index: 2;
       bottom: 10px;
       left: 10px;
       font-size: 1.2em;
@@ -77,46 +74,56 @@
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
     
-    /* Efeito shimmer no título */
-    @keyframes shimmer {
-      0% { background-position: -200px; }
-      100% { background-position: 200px; }
-    }
-    
-    .btn .title::before {
+    /* Efeito shimmer cobrindo todo o botão */
+    .btn::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
-      width: 100%;
+      left: -150%;
+      width: 50%;
       height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-      background-size: 200%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+      transform: skewX(-25deg);
       opacity: 0;
-      transition: opacity 0.5s ease;
       pointer-events: none;
+      z-index: 1;
     }
     
-    .btn:hover .title::before {
+    .btn:hover::before {
       opacity: 1;
       animation: shimmer 1.5s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-150%) skewX(-25deg);
+      }
+      100% {
+        transform: translateX(150%) skewX(-25deg);
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Iframe que carrega o site de fundo -->
+  <!-- Iframe que exibe seu site de fundo -->
   <iframe class="background-iframe" src="https://psicotela.vercel.app/" title="Fundo Psicotela"></iframe>
   
-  <!-- Conteúdo principal com botões -->
+  <!-- Conteúdo principal com os botões -->
   <div class="content">
     <div class="container">
-      <a class="btn" href="https://www.google.com" target="_blank">
+      <!-- Botão com imagem individual (Google) -->
+      <a class="btn" href="https://www.google.com" target="_blank"
+         style="background-image: url('https://cdn.discordapp.com/attachments/1225606559065968711/1289996293866913937/screenshot.jpg?ex=67d7ad6b&is=67d65beb&hm=6d374061a27e552ac9727d93348d5dde2cd9872b4c61bb59ee6a0c8ceeeae9d6&');">
         <span class="title">Google</span>
       </a>
-      <a class="btn" href="https://www.youtube.com" target="_blank">
+      <!-- Botão com imagem individual (YouTube) -->
+      <a class="btn" href="https://www.youtube.com" target="_blank"
+         style="background-image: url('https://via.placeholder.com/300x150/76ff03/000?text=YouTube');">
         <span class="title">YouTube</span>
       </a>
-      <a class="btn" href="https://www.wikipedia.org" target="_blank">
+      <!-- Botão com imagem individual (Wikipedia) -->
+      <a class="btn" href="https://www.wikipedia.org" target="_blank"
+         style="background-image: url('https://via.placeholder.com/300x150/b2ff59/000?text=Wikipedia');">
         <span class="title">Wikipedia</span>
       </a>
     </div>
