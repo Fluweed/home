@@ -3,21 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Futurística</title>
+  <title>Página Futurística com Fundo Psicotela</title>
   <style>
-    /* Estilo global */
-    body {
-      background-color: #0d0d0d;
-      font-family: 'Arial', sans-serif;
+    /* Reset básico */
+    body, html {
       margin: 0;
       padding: 0;
+      height: 100%;
+    }
+    
+    /* Estilo do iframe de fundo */
+    .background-iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: -1; /* Envia o iframe para trás do conteúdo */
+    }
+    
+    /* Conteúdo principal sobreposto ao fundo */
+    .content {
+      position: relative;
+      z-index: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      height: 100%;
     }
-
-    /* Contêiner centralizado para os botões */
+    
+    /* Contêiner centralizado dos botões */
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -26,8 +42,8 @@
       align-items: center;
       padding: 20px;
     }
-
-    /* Estilo dos botões */
+    
+    /* Estilo dos botões com gradiente animado */
     .btn {
       position: relative;
       display: inline-block;
@@ -42,12 +58,12 @@
       overflow: hidden;
       transition: background-position 0.5s ease;
     }
-
+    
     .btn:hover {
       background-position: right center;
     }
-
-    /* Título interno do botão, posicionado no canto inferior esquerdo */
+    
+    /* Título interno posicionado no canto inferior esquerdo */
     .btn .title {
       position: absolute;
       bottom: 10px;
@@ -56,17 +72,17 @@
       letter-spacing: 1px;
       transition: text-shadow 0.5s ease;
     }
-
+    
     .btn:hover .title {
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
-
-    /* Efeito de brilho no título usando pseudo-elemento e keyframes */
+    
+    /* Efeito shimmer no título */
     @keyframes shimmer {
       0% { background-position: -200px; }
       100% { background-position: 200px; }
     }
-
+    
     .btn .title::before {
       content: '';
       position: absolute;
@@ -80,7 +96,7 @@
       transition: opacity 0.5s ease;
       pointer-events: none;
     }
-
+    
     .btn:hover .title::before {
       opacity: 1;
       animation: shimmer 1.5s infinite;
@@ -88,16 +104,22 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <a class="btn" href="https://www.google.com" target="_blank">
-      <span class="title">Google</span>
-    </a>
-    <a class="btn" href="https://www.youtube.com" target="_blank">
-      <span class="title">YouTube</span>
-    </a>
-    <a class="btn" href="https://www.wikipedia.org" target="_blank">
-      <span class="title">Wikipedia</span>
-    </a>
+  <!-- Iframe que carrega o site de fundo -->
+  <iframe class="background-iframe" src="https://psicotela.vercel.app/" title="Fundo Psicotela"></iframe>
+  
+  <!-- Conteúdo principal com botões -->
+  <div class="content">
+    <div class="container">
+      <a class="btn" href="https://www.google.com" target="_blank">
+        <span class="title">Google</span>
+      </a>
+      <a class="btn" href="https://www.youtube.com" target="_blank">
+        <span class="title">YouTube</span>
+      </a>
+      <a class="btn" href="https://www.wikipedia.org" target="_blank">
+        <span class="title">Wikipedia</span>
+      </a>
+    </div>
   </div>
 </body>
 </html>
