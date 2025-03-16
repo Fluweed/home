@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Futurística</title>
+  <style>
+    /* Estilo global */
+    body {
+      background-color: #0d0d0d;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Contêiner centralizado para os botões */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Estilo dos botões */
+    .btn {
+      position: relative;
+      display: inline-block;
+      width: 300px;
+      height: 150px;
+      background: linear-gradient(45deg, #b2ff59, #76ff03, #ccff90);
+      background-size: 400%;
+      border: none;
+      border-radius: 15px;
+      text-decoration: none;
+      color: white;
+      overflow: hidden;
+      transition: background-position 0.5s ease;
+    }
+
+    .btn:hover {
+      background-position: right center;
+    }
+
+    /* Título interno do botão, posicionado no canto inferior esquerdo */
+    .btn .title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 1.2em;
+      letter-spacing: 1px;
+      transition: text-shadow 0.5s ease;
+    }
+
+    .btn:hover .title {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    /* Efeito de brilho no título usando pseudo-elemento e keyframes */
+    @keyframes shimmer {
+      0% { background-position: -200px; }
+      100% { background-position: 200px; }
+    }
+
+    .btn .title::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      background-size: 200%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .btn:hover .title::before {
+      opacity: 1;
+      animation: shimmer 1.5s infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="btn" href="https://www.google.com" target="_blank">
+      <span class="title">Google</span>
+    </a>
+    <a class="btn" href="https://www.youtube.com" target="_blank">
+      <span class="title">YouTube</span>
+    </a>
+    <a class="btn" href="https://www.wikipedia.org" target="_blank">
+      <span class="title">Wikipedia</span>
+    </a>
+  </div>
+</body>
+</html>
