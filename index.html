@@ -27,12 +27,14 @@
     
     /* Conteúdo principal */
     .content {
-      position: relative;
-      z-index: 1;
       display: flex;
+      flex-direction: column; /* Empilha os elementos verticalmente */
       justify-content: center;
       align-items: center;
-      height: 100%;
+      height: 100vh;
+      text-align: center;
+      padding: 20px; /* Evita que o título fique colado na borda da tela */
+      box-sizing: border-box;
     }
     
     /* Container de botões */
@@ -145,11 +147,12 @@
     .main-title {
       font-family: 'Orbitron', sans-serif;
       font-size: 4em;
+      margin-top: 10vh;
       text-align: center;
       color: #b2ff59;
       -webkit-text-stroke: 2px black;
       text-shadow: 2px 2px 4px black, 0 0 8px black;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
       width: 100%;
     }
   </style>
