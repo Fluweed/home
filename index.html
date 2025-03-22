@@ -4,13 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fluweed.</title>
+  <!-- Importando uma fonte futurística do Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Reset básico */
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
     }
+    
+    /* Iframe de fundo */
     .background-iframe {
       position: fixed;
       top: 0;
@@ -20,31 +24,20 @@
       border: none;
       z-index: -1;
     }
+    
+    /* Conteúdo principal */
     .content {
       display: flex;
-      flex-direction: column;
+      flex-direction: column; /* Empilha os elementos verticalmente */
+      justify-content: center;
       align-items: center;
       height: 100vh;
-      padding: 20px;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 10;
-    }
-    .main-title {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 3em;
       text-align: center;
-      color: #b2ff59;
-      -webkit-text-stroke: 2px black;
-      text-shadow: 2px 2px 4px black, 0 0 8px black;
-      z-index: 100;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      border-radius: 10px;
+      padding: 20px; /* Evita que o título fique colado na borda da tela */
+      box-sizing: border-box;
     }
+    
+    /* Container de botões */
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -53,6 +46,8 @@
       align-items: center;
       padding: 20px;
     }
+    
+    /* Estilo base dos botões */
     .btn {
       position: relative;
       display: inline-block;
@@ -63,14 +58,17 @@
       border: none;
       border-radius: 15px;
       text-decoration: none;
-      color: #b2ff59;
+      color: #b2ff59; /* Verde claro */
       overflow: hidden;
       z-index: 0;
       transition: box-shadow 0.5s ease;
     }
+    
     .btn:hover {
       box-shadow: 0 0 15px #b2ff59;
     }
+    
+    /* Título do botão */
     .btn .title {
       position: absolute;
       bottom: 10px;
@@ -84,29 +82,82 @@
       transition: text-shadow 0.5s ease;
       z-index: 2;
     }
+    
+    /* Efeito shimmer cobrindo todo o botão */
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+      transform: skewX(-25deg);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .btn:hover::before {
+      opacity: 1;
+      animation: shimmer 1.5s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-150%) skewX(-25deg);
+      }
+      100% {
+        transform: translateX(150%) skewX(-25deg);
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Iframe que exibe seu site de fundo -->
   <iframe class="background-iframe" src="https://psicotela.vercel.app/" title="Fundo Psicotela"></iframe>
+  
+  <!-- Conteúdo principal com o título e os botões -->
   <div class="content">
-    <h1 class="main-title">Fluweed_</h1>
     <div class="container">
-      <a class="btn" href="https://servers.fivem.net/servers/detail/6xgxjd" target="_blank" style="background-image: url('https://i.postimg.cc/j2yg5VrT/logo.png');">
+      <!-- Título centralizado -->
+      <h1 class="main-title">Fluweed_</h1>
+      
+      <!-- Botões -->
+      <a class="btn" href="https://servers.fivem.net/servers/detail/6xgxjd" target="_blank"
+         style="background-image: url('https://i.postimg.cc/j2yg5VrT/logo.png');">
         <span class="title">Groove</span>
       </a>
-      <a class="btn" href="https://aquario3d.vercel.app" target="_blank" style="background-image: url('https://i.postimg.cc/vmCWbSpc/aquario.jpg');">
+      <a class="btn" href="https://aquario3d.vercel.app" target="_blank"
+         style="background-image: url('https://i.postimg.cc/vmCWbSpc/aquario.jpg');">
         <span class="title">Aquario 3D</span>
       </a>
-      <a class="btn" href="https://apptetris.vercel.app" target="_blank" style="background-image: url('https://i.postimg.cc/J0LZBH78/tetris.jpg');">
+      <a class="btn" href="https://apptetris.vercel.app" target="_blank"
+         style="background-image: url('https://i.postimg.cc/J0LZBH78/tetris.jpg');">
         <span class="title">Tetris 3D</span>
       </a>
-      <a class="btn" href="https://psicotela.vercel.app" target="_blank" style="background-image: url('https://i.postimg.cc/rs5mxfnZ/psico.jpg');">
+      <a class="btn" href="https://psicotela.vercel.app" target="_blank"
+         style="background-image: url('https://i.postimg.cc/rs5mxfnZ/psico.jpg');">
         <span class="title">Psicotela</span>
       </a>
-      <a class="btn" href="https://www.youtube.com/@Fluweed" target="_blank" style="background-image: url('https://canaljms.com/wp-content/uploads/2021/07/youtube.png');">
+      <a class="btn" href="https://www.youtube.com/@Fluweed" target="_blank"
+         style="background-image: url('https://canaljms.com/wp-content/uploads/2021/07/youtube.png');">
         <span class="title">YouTube</span>
       </a>
     </div>
   </div>
+
+  <style>
+    .main-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4em;
+      margin-top: 10vh;
+      text-align: center;
+      color: #b2ff59;
+      -webkit-text-stroke: 2px black;
+      text-shadow: 2px 2px 4px black, 0 0 8px black;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+  </style>
 </body>
-</html>
